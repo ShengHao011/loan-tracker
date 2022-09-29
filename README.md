@@ -10,5 +10,16 @@
 - This project is of interest to me because I love
     playing video games and want to construct a game
     myself. 
+
+
+
+
+### *User Stories*
+- As a user, I want to be able to move the object up
+- As a user, I want to be able to move the object right
+- As a user, I want to be able to move the object down
+- As a user, I want to be able to move the object left
+- As a user, I want to be able to add a new map to a list of existing maps
+
     
   
