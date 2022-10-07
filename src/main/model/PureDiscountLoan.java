@@ -3,16 +3,16 @@ package model;
 public class PureDiscountLoan {
     private final String name;              // The name of this loan
     private final double amount;            // Amount borrowed by the borrower
-    private final double rate;      // Annual interest rate to determine amount of interest
+    private final double rate;              // Annual interest rate to determine amount of interest
     private final int length;               // Length of the loan
 
-    // REQUIRES: loanName has a non-zero length, loanAmount >= 0, 0 < interestRate < 1, installmentYears >= 1
+    // REQUIRES: loanName has a non-zero length, loanAmount >= 0, 0 < interestRate < 1, loanLength >= 1
     // EFFECTS: name of the loan is set to loanName, amount of the loan is set to loanAmount,
-    //          interestRate is set to interestRate, installmentYears is set to loanLength.
+    //          rate is set to interestRate, length is set to loanLength.
     public PureDiscountLoan(String loanName, double loanAmount, double interestRate, int loanLength) {
-        name = loanName;
+        name   = loanName;
         amount = loanAmount;
-        rate = interestRate;
+        rate   = interestRate;
         length = loanLength;
     }
 

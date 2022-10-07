@@ -9,7 +9,8 @@ class PureDiscountLoanTest {
 
     @BeforeEach
     void runBefore() {
-        pdLoan = new PureDiscountLoan("BankLoan",9070.29, 0.05, 2);
+        pdLoan =
+                new PureDiscountLoan("BankLoan",9070.29, 0.05, 2);
     }
 
     @Test
