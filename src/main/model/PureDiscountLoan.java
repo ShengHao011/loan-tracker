@@ -16,6 +16,7 @@ public class PureDiscountLoan extends Loan {
         length = loanLength;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -32,7 +33,7 @@ public class PureDiscountLoan extends Loan {
         return length;
     }
 
-    // EFFECTS: calculate the future value of the loan,
+    // EFFECTS: calculates the future value of the loan,
     public double calculateFV() {
         double fv = amount * Math.pow((1 + rate), length);
         return Math.round((fv * 100) / 100.0);

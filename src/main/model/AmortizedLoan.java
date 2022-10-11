@@ -2,7 +2,7 @@ package model;
 
 public class AmortizedLoan extends Loan {
     private final String name;           // The name of this loan
-    private float principalAmount;       // Amount borrowed by the borrower
+    private double principalAmount;       // Amount borrowed by the borrower
     private final double rate;            // Annual interest rate to determine amount of interest
     private int yearsRemaining;          // Length of the loan remaining in years
     private final double yearlyAnnuities;      // Total payment each year for the loan
@@ -19,11 +19,12 @@ public class AmortizedLoan extends Loan {
                 / ((1 - Math.pow((1 + rate), (-1 * yearsRemaining))) / rate)) * 100) / 100.0;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public float getPrincipalAmount() {
+    public double getPrincipalAmount() {
         return principalAmount;
     }
 
@@ -39,5 +40,25 @@ public class AmortizedLoan extends Loan {
         return yearlyAnnuities;
     }
 
+    // EFFECTS: calculates the interest paid for the year
+    public double calculateInterestPaid() {
+        return principalAmount * rate;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deduct yearsRemaining by 1, if yearsRemaining is 0, then keep it at 0
+    public void deductYearsRemaining() {
+        if (yearsRemaining == 0) {
+            yearsRemaining = 0;
+        } else {
+            yearsRemaining = yearsRemaining - 1;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: subtracts principle amount by principle paid
+    public void deductPrincipleAmount() {
+        principalAmount = principalAmount - (yearlyAnnuities - calculateInterestPaid());
+    }
 
 }
