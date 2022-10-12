@@ -14,7 +14,7 @@ There are a lot of calculations involved and having an application with the calc
 
 
 ### *User Stories*
-- As a user, I want to add a loan to a list of loans.
+- As a user, I want to add a loan to a list of loan.
 - As a user, I want view the list of loans that I currently have.
 - As a user, I want to be able to remove a loan from a list of loans.
 - As a user, I want select a loan and view the details of that specific loan. 
