@@ -135,7 +135,7 @@ public class LoanApp {
                 listofLoans.remove(i);
                 System.out.println("Loan has been removed!");
             } else {
-                System.out.println("There is no such loan!");
+                System.out.println("Loan name does not match!");
             }
         }
     }
