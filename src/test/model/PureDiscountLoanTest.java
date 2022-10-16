@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PureDiscountLoanTest {
@@ -10,19 +11,19 @@ class PureDiscountLoanTest {
     @BeforeEach
     void runBefore() {
         pdLoan =
-                new PureDiscountLoan("BankLoan",9070.29, 0.05, 2);
+                new PureDiscountLoan("BankLoan", 9070.29, 0.05, 2);
     }
 
     @Test
     void constructorTest() {
-        assertEquals("BankLoan",pdLoan.getName());
-        assertEquals(9070.29,pdLoan.getAmount());
-        assertEquals(0.05,pdLoan.getInterestRate());
-        assertEquals(2,pdLoan.getLength());
+        assertEquals("BankLoan", pdLoan.getName());
+        assertEquals(9070.29, pdLoan.getAmount());
+        assertEquals(0.05, pdLoan.getInterestRate());
+        assertEquals(2, pdLoan.getLength());
     }
 
     @Test
     void calculateFVTest() {
-        assertEquals(10000,pdLoan.calculateFV());
+        assertEquals(10000, pdLoan.calculateFV());
     }
 }

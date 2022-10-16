@@ -1,16 +1,16 @@
 package ui;
 
 import model.AmortizedLoan;
+import model.ListOfLoan;
 import model.Loan;
 import model.PureDiscountLoan;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Loan Tracker Application
 public class LoanApp {
     private Scanner input;
-    private ArrayList<Loan> listofLoans;
+    private ListOfLoan listOfLoan;
 
     // EFFECTS: run the application
     public LoanApp() {
@@ -18,12 +18,12 @@ public class LoanApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: read user input
+    // EFFECTS: execute user input
     private void runApp() {
-        listofLoans = new ArrayList<>();
         boolean state = true;
         String command = null;
-        input = new Scanner(System.in);
+
+        init();
 
         while (state) {
             showMenu();
@@ -56,6 +56,13 @@ public class LoanApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: initialize a list of loans and input
+    private void init() {
+        listOfLoan = new ListOfLoan();
+        input = new Scanner(System.in);
+    }
+
     // EFFECTS: Display the starting menu
     private void showMenu() {
         System.out.println("Select one option below:");
@@ -66,6 +73,7 @@ public class LoanApp {
         System.out.println("q -> quit");
     }
 
+    // MODIFIES: this
     // EFFECTS: Display menu for adding a new loan, prompts user to select the type of loan they want to add
     public void showAddLoanMenu() {
         String option = "";
@@ -85,7 +93,7 @@ public class LoanApp {
         }
     }
 
-    // MODIFIES: this, listofLoans
+    // MODIFIES: this, PureDiscountLoan
     // EFFECTS: given user input values, create a Pure Discount Loan and add it to a list of loans
     public void createPureDiscountLoan() {
         System.out.println("Enter a name for this loan:");
@@ -94,19 +102,19 @@ public class LoanApp {
         System.out.println("Enter the loan amount:");
         double amount = input.nextDouble();
 
-        System.out.println("Enter the interest rate");
+        System.out.println("Enter the interest rate:");
         double rate = input.nextDouble();
 
         System.out.println("Enter the length of the loan(years):");
         int length = input.nextInt();
 
         PureDiscountLoan pdLoan = new PureDiscountLoan(name, amount, rate, length);
-        listofLoans.add(pdLoan);
+        listOfLoan.getListOfLoan().add(pdLoan);
         System.out.println("Loan has been added to your list of loans!");
     }
 
-    // MODIFIES: this, listofLoans
-    // EFFECTS: given user input values, create a Amortized Loan and add it to a list of loans
+    // MODIFIES: this, AmortizedLoan
+    // EFFECTS: given user input values, create an Amortized Loan and add it to a list of loans
     public void createAmortizedLoan() {
         System.out.println("Enter a name for this loan:");
         String name = input.next();
@@ -114,28 +122,26 @@ public class LoanApp {
         System.out.println("Enter the loan amount:");
         float amount = input.nextFloat();
 
-        System.out.println("Enter the interest rate");
+        System.out.println("Enter the interest rate:");
         double rate = input.nextDouble();
 
         System.out.println("Enter the length of the loan(years):");
         int length = input.nextInt();
 
         AmortizedLoan amtLoan = new AmortizedLoan(name, amount, rate, length);
-        listofLoans.add(amtLoan);
+        listOfLoan.getListOfLoan().add(amtLoan);
         System.out.println("Loan has been added to your list of loans!");
     }
 
     // MODIFIES: this
-    // EFFECTS: removes the loan in listofLoan given the loan name
+    // EFFECTS: removes the loan in listOfLoan given the loan name
     public void removeLoan() {
         System.out.println("Enter the name of the loan to be removed");
         String removeName = input.next();
-        for (int i = 0; i < listofLoans.size(); i++) {
-            if (removeName.equals((listofLoans.get(i)).getName())) {
-                listofLoans.remove(i);
+        for (int i = 0; i < listOfLoan.getListOfLoan().size(); i++) {
+            if (removeName.equals((listOfLoan.getListOfLoan().get(i)).getName())) {
+                listOfLoan.getListOfLoan().remove(i);
                 System.out.println("Loan has been removed!");
-            } else {
-                System.out.println("Loan name does not match!");
             }
         }
     }
@@ -145,7 +151,7 @@ public class LoanApp {
         System.out.println("Enter the name of the loan to view its details");
         String loanName = input.next();
         Loan selected = null;
-        for (Loan l : listofLoans) {
+        for (Loan l : listOfLoan.getListOfLoan()) {
             if (loanName.equals(l.getName())) {
                 selected = l;
             }
@@ -171,7 +177,7 @@ public class LoanApp {
     public void showExistingLoans() {
         System.out.println("Your current list of loans:");
 
-        for (Loan l : listofLoans) {
+        for (Loan l : listOfLoan.getListOfLoan()) {
             System.out.println(l.getName());
         }
     }

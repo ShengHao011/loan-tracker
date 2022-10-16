@@ -14,10 +14,10 @@ public class AmortizedLoan extends Loan {
     public AmortizedLoan(String loanName, float loanAmount, double interestRate, int loanLength) {
         super(loanName);
         principalAmount = loanAmount;
-        rate = interestRate;
-        yearsRemaining = loanLength;
-        yearlyAnnuities = Math.round((principalAmount
-                / ((1 - Math.pow((1 + rate), (-1 * yearsRemaining))) / rate)) * 100) / 100.0;
+        rate            = interestRate;
+        yearsRemaining  = loanLength;
+        yearlyAnnuities = Math.round(
+                (principalAmount / ((1 - Math.pow((1 + rate), (-1 * yearsRemaining))) / rate)) * 100) / 100.0;
     }
 
     public double getPrincipalAmount() {
