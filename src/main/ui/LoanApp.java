@@ -93,7 +93,7 @@ public class LoanApp {
         }
     }
 
-    // MODIFIES: this, PureDiscountLoan
+    // MODIFIES: this,
     // EFFECTS: given user input values, create a Pure Discount Loan and add it to a list of loans
     public void createPureDiscountLoan() {
         System.out.println("Enter a name for this loan:");
@@ -113,7 +113,7 @@ public class LoanApp {
         System.out.println("Loan has been added to your list of loans!");
     }
 
-    // MODIFIES: this, AmortizedLoan
+    // MODIFIES: this,
     // EFFECTS: given user input values, create an Amortized Loan and add it to a list of loans
     public void createAmortizedLoan() {
         System.out.println("Enter a name for this loan:");
