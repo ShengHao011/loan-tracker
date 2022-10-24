@@ -19,6 +19,8 @@
 - As a user, I want view the list of loans that I currently have.
 - As a user, I want to be able to remove a loan from a list of loans.
 - As a user, I want to choose a loan and view the details of that specific loan. 
+- As a user, I want to save my list of loans to file.
+- As a user, I want to load my list of loans from file.
  
 
     
