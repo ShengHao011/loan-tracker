@@ -46,7 +46,7 @@ public class Reader {
 
     private void addLoans(ListOfLoan lol, JSONObject objJ) {
         JSONArray arrayJ = objJ.getJSONArray("List of Loan");
-        for (Object o: arrayJ) {
+        for (Object o : arrayJ) {
             JSONObject nextLoan = (JSONObject) o;
             addLoan(lol, nextLoan);
         }

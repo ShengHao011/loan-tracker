@@ -56,8 +56,10 @@ public class WriterTest extends JsonTest {
             Reader reader = new Reader("./data/writerGenerallistofloanTest.json");
             lol = reader.read();
             assertEquals(2, lol.getListOfLoan().size());
-            checkLoan("BankLoan", lol.getListOfLoan().get(0));
-            checkLoan("TestLoan", lol.getListOfLoan().get(1));
+            checkPDLoan("BankLoan", 9070.29, 0.05, 2,
+                    (PureDiscountLoan) lol.getListOfLoan().get(0));
+            checkAmtLoan("TestLoan", 5000, 0.08, 4,
+                    (AmortizedLoan) lol.getListOfLoan().get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
