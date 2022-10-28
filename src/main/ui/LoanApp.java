@@ -4,16 +4,26 @@ import model.AmortizedLoan;
 import model.ListOfLoan;
 import model.Loan;
 import model.PureDiscountLoan;
+import persistence.Reader;
+import persistence.Writer;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 // Loan Tracker Application
 public class LoanApp {
+    private static final String destination = "./data/myFile.json";
     private Scanner input;
     private ListOfLoan listOfLoan;
+    private Writer writer;
+    private Reader reader;
 
     // EFFECTS: run the application
     public LoanApp() {
+        writer = new Writer(destination);
+        reader = new Reader(destination);
         runApp();
     }
 
@@ -51,6 +61,10 @@ public class LoanApp {
             displayLoanDetail();
         } else if (userInput.equals("v")) {
             showExistingLoans();
+        } else if (userInput.equals("s")) {
+            saveListOfLoan();
+        } else if (userInput.equals("l")) {
+            loadListOfLoan();
         } else {
             System.out.println("Selection does not exist!");
         }
@@ -70,6 +84,8 @@ public class LoanApp {
         System.out.println("r -> Remove A Loan");
         System.out.println("d -> View details of a loan");
         System.out.println("v -> View Existing Loans");
+        System.out.println("s -> Save list of loan to file");
+        System.out.println("l -> Load list of loan from file");
         System.out.println("q -> quit");
     }
 
@@ -179,6 +195,29 @@ public class LoanApp {
 
         for (Loan l : listOfLoan.getListOfLoan()) {
             System.out.println(l.getName());
+        }
+    }
+
+    // EFFECTS: saves list of loan to file
+    private void saveListOfLoan() {
+        try {
+            writer.open();
+            writer.write(listOfLoan);
+            writer.close();
+            System.out.println("Saved list of loan to" + destination);
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to save list of loan");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads list of loan from file
+    private void loadListOfLoan() {
+        try {
+            listOfLoan = reader.read();
+            System.out.println("Loaded list of loan from" + destination);
+        } catch (IOException e) {
+            System.out.printf("Failed to load list of loan");
         }
     }
 }
