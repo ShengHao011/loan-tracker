@@ -17,7 +17,7 @@ public class ReaderTest extends JsonTest {
         Reader reader = new Reader("./data/noSuchFile.json");
         try {
             ListOfLoan lol = reader.read();
-            fail("IOException was Expected");
+            fail("IOException expected");
         } catch (IOException e) {
             // pass
         }
