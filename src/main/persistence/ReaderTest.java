@@ -30,7 +30,7 @@ public class ReaderTest extends JsonTest {
         try {
             writer.open();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            fail();
         }
         writer.write(lol);
         writer.close();
@@ -55,7 +55,7 @@ public class ReaderTest extends JsonTest {
         try {
             writer.open();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            fail();
         }
         writer.write(lol);
         writer.close();
