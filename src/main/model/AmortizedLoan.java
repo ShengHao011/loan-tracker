@@ -6,10 +6,10 @@ import persistence.Writable;
 // Represents an amortized loan with a name, principal amount at the beginning, interest rate, length of the loan,
 //            and its yearly annuities.
 public class AmortizedLoan extends Loan implements Writable {
-    private double principalAmount;       // Amount borrowed by the borrower
-    private final double rate;            // Annual interest rate to determine amount of interest
-    private int yearsRemaining;           // Length of the loan remaining in years
-    private final double yearlyAnnuities; // Total payment each year for the loan
+    private double principalAmount;                     // Amount borrowed by the borrower
+    private final double rate;                          // Annual interest rate to determine amount of interest
+    private int yearsRemaining;                         // Length of the loan remaining in years
+    private final double yearlyAnnuities;               // Total payment each year for the loan
     private static final String type = "AmortizedLoan"; // Type of the loan
 
     // REQUIRES: loanName has a non-zero length, loanAmount >= 0, 0 < interestRate < 1, loanLength >= 1

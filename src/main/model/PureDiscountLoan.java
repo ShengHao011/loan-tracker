@@ -5,10 +5,10 @@ import persistence.Writable;
 
 // Represents a pure discount loan that has a name, loan amount, interest rate, length of the loan,
 public class PureDiscountLoan extends Loan implements Writable {
-    private final double amount;            // Amount borrowed by the borrower
-    private final double rate;              // Annual interest rate to determine amount of interest
-    private final int length;               // Length of the loan remaining in years
-    private static final String type = "PureDiscountLoan";
+    private final double amount;                           // Amount borrowed by the borrower
+    private final double rate;                             // Annual interest rate to determine amount of interest
+    private final int length;                              // Length of the loan remaining in years
+    private static final String type = "PureDiscountLoan"; // Type of the loan
 
     // REQUIRES: loanName has a non-zero length, loanAmount >= 0, 0 < interestRate < 1, loanLength >= 1
     // EFFECTS: name of the loan is set to loanName, amount of the loan is set to loanAmount,

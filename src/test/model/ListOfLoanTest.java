@@ -1,4 +1,4 @@
-package test;
+package model;
 
 import model.ListOfLoan;
 import org.junit.jupiter.api.Test;
