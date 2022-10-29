@@ -1,5 +1,6 @@
-package model;
+package test;
 
+import model.AmortizedLoan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,7 @@ public class AmortizedLoanTest {
         assertEquals(0.08, amtLoan.getRate());
         assertEquals(4, amtLoan.getYearsRemaining());
         assertEquals(1509.60, amtLoan.getYearlyAnnuities());
+        assertEquals("AmortizedLoan", amtLoan.getType());
     }
 
     @Test

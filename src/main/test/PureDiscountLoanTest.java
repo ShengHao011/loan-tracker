@@ -1,5 +1,6 @@
-package model;
+package test;
 
+import model.PureDiscountLoan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,7 @@ class PureDiscountLoanTest {
         assertEquals(9070.29, pdLoan.getAmount());
         assertEquals(0.05, pdLoan.getInterestRate());
         assertEquals(2, pdLoan.getLength());
+        assertEquals("PureDiscountLoan", pdLoan.getType());
     }
 
     @Test

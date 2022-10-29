@@ -1,9 +1,12 @@
-package persistence;
+package test;
 
 import model.AmortizedLoan;
 import model.ListOfLoan;
 import model.PureDiscountLoan;
 import org.junit.jupiter.api.Test;
+import persistence.Reader;
+import persistence.Writer;
+import test.JsonTest;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

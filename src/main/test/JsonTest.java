@@ -1,4 +1,4 @@
-package persistence;
+package test;
 
 import model.AmortizedLoan;
 import model.PureDiscountLoan;
