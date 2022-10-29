@@ -28,6 +28,7 @@ public class Reader {
         return createLoL(objJ);
     }
 
+    // EFFECTS: reads sources from file and returns as a string
     public String readFile(String source) throws IOException {
         StringBuilder content = new StringBuilder();
 
@@ -38,12 +39,15 @@ public class Reader {
         return content.toString();
     }
 
+    // EFFECTS: creates list of loan from JSON Object and returns it
     private ListOfLoan createLoL(JSONObject objJ) {
         ListOfLoan lol = new ListOfLoan();
         addLoans(lol, objJ);
         return lol;
     }
 
+    // MODIFIES: lol
+    // EFFECTS: creates loans from JSON Object and adds them to the list of loan
     private void addLoans(ListOfLoan lol, JSONObject objJ) {
         JSONArray arrayJ = objJ.getJSONArray("List of Loan");
         for (Object o : arrayJ) {
@@ -52,6 +56,8 @@ public class Reader {
         }
     }
 
+    // MODIFIES: lol
+    // EFFECTS: creates loan form JSON Object and adds it to the list of loan
     private void addLoan(ListOfLoan lol, JSONObject objJ) {
         String name = objJ.getString("name");
         double amount = objJ.getDouble("amount");
