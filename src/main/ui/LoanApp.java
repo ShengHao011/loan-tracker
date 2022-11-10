@@ -9,7 +9,6 @@ import persistence.Writer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 // Loan Tracker Application
