@@ -15,4 +15,9 @@ public abstract class Loan {
     }
 
     public abstract JSONObject convertToJson();
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
