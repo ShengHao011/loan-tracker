@@ -33,10 +33,12 @@ public class AmortizedLoanTest {
     void deductYearsRemainingTest() {
         amtLoan.deductYearsRemaining();
         assertEquals(3, amtLoan.getYearsRemaining());
-        AmortizedLoan zerolengthLoan =
-                new AmortizedLoan("TestLoan", 5000, 0.08, 0);
-        zerolengthLoan.deductYearsRemaining();
-        assertEquals(0, zerolengthLoan.getYearsRemaining());
+        AmortizedLoan oneYearlengthLoan =
+                new AmortizedLoan("TestLoan", 5000, 0.08, 1);
+        oneYearlengthLoan.deductYearsRemaining();
+        assertEquals(0, oneYearlengthLoan.getYearsRemaining());
+        oneYearlengthLoan.deductYearsRemaining();
+        assertEquals(0, oneYearlengthLoan.getYearsRemaining());
     }
 
     @Test

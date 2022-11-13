@@ -20,7 +20,7 @@ public class AddPDLoanListener extends AddLoanListener {
         amount = Double.parseDouble(loanApplication.loanAmount.getText());
         rate = Double.parseDouble(loanApplication.interestRate.getText());
         double decimalrate = rate / 100.0;
-        length = Integer.parseInt(loanApplication.interestRate.getText());
+        length = Integer.parseInt(loanApplication.loanLength.getText());
         PureDiscountLoan pdLoan = new PureDiscountLoan(super.name, super.amount, decimalrate, super.length);
         super.loanApplication.loans.getListOfLoan().add(pdLoan);
         super.loanApplication.listModel.addElement(pdLoan);

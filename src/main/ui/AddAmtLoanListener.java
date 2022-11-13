@@ -20,7 +20,7 @@ public class AddAmtLoanListener extends AddLoanListener {
         amount = Double.parseDouble(loanApplication.loanAmount.getText());
         rate = Double.parseDouble(loanApplication.interestRate.getText());
         double decimalrate = rate / 100.0;
-        length = Integer.parseInt(loanApplication.interestRate.getText());
+        length = Integer.parseInt(loanApplication.loanLength.getText());
         AmortizedLoan amtLoan = new AmortizedLoan(super.name, super.amount, decimalrate, super.length);
         super.loanApplication.loans.getListOfLoan().add(amtLoan);
         super.loanApplication.listModel.addElement(amtLoan);

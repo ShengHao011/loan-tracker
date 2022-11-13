@@ -26,6 +26,6 @@ class PureDiscountLoanTest {
 
     @Test
     void calculateFVTest() {
-        assertEquals(10000, pdLoan.calculateFV());
+        assertEquals(9999.99, pdLoan.calculateFV());
     }
 }

@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.text.DecimalFormat;
+
 // Represents an amortized loan with a name, principal amount at the beginning, interest rate, length of the loan,
 //            and its yearly annuities.
 public class AmortizedLoan extends Loan implements Writable {
@@ -20,8 +22,10 @@ public class AmortizedLoan extends Loan implements Writable {
         principalAmount = loanAmount;
         rate            = interestRate;
         yearsRemaining  = loanLength;
-        yearlyAnnuities = Math.round(
-                (principalAmount / ((1 - Math.pow((1 + rate), (-1 * yearsRemaining))) / rate)) * 100) / 100.0;
+        int n = yearsRemaining;
+        double ya = (principalAmount / ((1 - Math.pow((1 + rate), (-1 * n))) / rate));
+        DecimalFormat df = new DecimalFormat("0.00");
+        yearlyAnnuities = Double.parseDouble(df.format(ya));
     }
 
     public double getPrincipalAmount() {

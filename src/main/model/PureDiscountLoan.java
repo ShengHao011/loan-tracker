@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.text.DecimalFormat;
+
 // Represents a pure discount loan that has a name, loan amount, interest rate, length of the loan,
 public class PureDiscountLoan extends Loan implements Writable {
     private final double amount;                           // Amount borrowed by the borrower
@@ -39,7 +41,8 @@ public class PureDiscountLoan extends Loan implements Writable {
     // EFFECTS: calculates the future value of the loan,
     public double calculateFV() {
         double fv = amount * Math.pow((1 + rate), length);
-        return Math.round((fv * 100) / 100.0);
+        DecimalFormat df = new DecimalFormat("0.00");
+        return Double.parseDouble(df.format(fv));
     }
 
     @Override
