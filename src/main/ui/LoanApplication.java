@@ -1,6 +1,5 @@
 package ui;
 
-import com.sun.security.auth.module.JndiLoginModule;
 import model.ListOfLoan;
 import model.Loan;
 import persistence.Reader;
@@ -237,6 +236,7 @@ public class LoanApplication {
         loanDetailsPanel.setBackground(Color.YELLOW);
     }
 
+    // REQUIRES: save and load buttons are created
     // MODIFIES: this
     // EFFECTS: creates a save load panel
     public void createsaveloadPanel() {

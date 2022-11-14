@@ -14,12 +14,12 @@ import java.awt.event.ActionListener;
 public class ViewLoanDetailsListener implements ActionListener {
     private LoanApplication loanApplication;
     private String filler = "";
-    private Object [] columnNames;
-    private Object [] row1Data;
-    private Object [] loanInfoData;
-    private Object [] emptyRow;
-    private Object [] title;
-    private Object [] scheduleColumnNames;
+    private Object[] columnNames;
+    private Object[] row1Data;
+    private Object[] loanInfoData;
+    private Object[] emptyRow;
+    private Object[] title;
+    private Object[] scheduleColumnNames;
     private DefaultTableModel model;
     private JLabel label;
 
@@ -43,11 +43,11 @@ public class ViewLoanDetailsListener implements ActionListener {
     // MODIFIES: detailsTable
     // EFFECTS: create a JTable for a pure discount loan
     public void createPDloanTable(PureDiscountLoan selectedLoan) {
-        Object [] columnNames = {"Loan Amount:", "Effective Annual Rate:", "Loan Length:"};
-        Object [] row1Data = {"Loan Amount:", "Effective Annual Rate:", "Loan Length:"};
-        Object [] loanInfoData = {"$" + selectedLoan.getAmount(),
+        Object[] columnNames = {"Loan Amount:", "Effective Annual Rate:", "Loan Length:"};
+        Object[] row1Data = {"Loan Amount:", "Effective Annual Rate:", "Loan Length:"};
+        Object[] loanInfoData = {"$" + selectedLoan.getAmount(),
                 selectedLoan.getInterestRate() * 100 + " %", selectedLoan.getLength() + " Years"};
-        Object [] fvData = {"Future Value: " + "$" + selectedLoan.calculateFV()};
+        Object[] fvData = {"Future Value: " + "$" + selectedLoan.calculateFV()};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
         model.addRow(row1Data);
@@ -74,7 +74,7 @@ public class ViewLoanDetailsListener implements ActionListener {
 
         double totalInterest = interest;
         for (int i = 1; i <= selectedLoan.getYearsRemaining(); i++) {
-            Object [] row = new Object[]{i, bb, yearlyPayment, interest, principalPaid, eb};
+            Object[] row = new Object[]{i, bb, yearlyPayment, interest, principalPaid, eb};
             model.addRow(row);
             bb = eb;
             interest = selectedLoan.getRate() * bb;
@@ -83,7 +83,7 @@ public class ViewLoanDetailsListener implements ActionListener {
             eb = bb - principalPaid;
         }
         double totalPayment = yearlyPayment * selectedLoan.getYearsRemaining();
-        Object [] rowTotals = {"Totals:", filler, totalPayment, totalInterest, totalPayment - totalInterest};
+        Object[] rowTotals = {"Totals:", filler, totalPayment, totalInterest, totalPayment - totalInterest};
         model.addRow(rowTotals);
         createlabel(selectedLoan);
         setupdetailsTable();
