@@ -5,20 +5,21 @@ import model.Loan;
 import model.PureDiscountLoan;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // Action listener for viewLoanDetails button
 public class ViewLoanDetailsListener implements ActionListener {
-    LoanApplication loanApplication;
-    String filler = "";
-    Object [] columnNames;
-    Object [] row1Data;
-    Object [] loanInfoData;
-    Object [] emptyRow;
-    Object [] title;
-    Object [] scheduleColumnNames;
-    DefaultTableModel model;
+    private LoanApplication loanApplication;
+    private String filler = "";
+    private Object [] columnNames;
+    private Object [] row1Data;
+    private Object [] loanInfoData;
+    private Object [] emptyRow;
+    private Object [] title;
+    private Object [] scheduleColumnNames;
+    private DefaultTableModel model;
 
     // EFFECTS: creates a viewLoanDetails Listener,
     public ViewLoanDetailsListener(LoanApplication loanApplication) {
@@ -50,6 +51,7 @@ public class ViewLoanDetailsListener implements ActionListener {
         model.addRow(loanInfoData);
         model.addRow(fvData);
         loanApplication.detailsTable.setModel(model);
+        loanApplication.detailsTable.setGridColor(Color.RED);
         loanApplication.addJTabletoPanel();
     }
 
@@ -75,11 +77,11 @@ public class ViewLoanDetailsListener implements ActionListener {
         }
         double totalPayment = yearlyPayment * selectedLoan.getYearsRemaining();
         double totalPrinciplePaid = totalPayment - totalInterest;
-        Object [] rowTotals = {"Totals:", filler, totalPayment,
-                totalInterest, totalPrinciplePaid};
+        Object [] rowTotals = {"Totals:", filler, totalPayment, totalInterest, totalPrinciplePaid};
         model.addRow(rowTotals);
 
         loanApplication.detailsTable.setModel(model);
+        loanApplication.detailsTable.setGridColor(Color.RED);
         loanApplication.addJTabletoPanel();
     }
 

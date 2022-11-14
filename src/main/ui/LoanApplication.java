@@ -2,10 +2,13 @@ package ui;
 
 import model.ListOfLoan;
 import model.Loan;
+import persistence.Reader;
+import persistence.Writer;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // Loan Tracker Application
 public class LoanApplication {
@@ -17,6 +20,8 @@ public class LoanApplication {
     private AddLoanListener addAmtLoanListener;
     private RemoveLoanListener removeLoanListener;
     private ViewLoanDetailsListener viewLoanDetailsListener;
+    private SaveListener saveListener;
+    private LoadListener loadListener;
 
     private JFrame frame;
 
@@ -40,12 +45,21 @@ public class LoanApplication {
     protected JTextField interestRate;
     protected JTextField loanLength;
 
+    private JButton saveButton;
+    private JButton loadButton;
+
+    private Writer writer;
+    private Reader reader;
+    private static final String destination = "./data/myFile.json";
+
     // EFFECTS: constucts a loan tracker application GUI
     public LoanApplication() {
         loans = new ListOfLoan();
         listModel = new DefaultListModel<>();
         detailsTable = new JTable();
-        detailsTable.setGridColor(Color.RED);
+
+        writer = new Writer(destination);
+        reader = new Reader(destination);
 
         createJlist();
         loanListPane = new JScrollPane(loanList);
@@ -57,6 +71,8 @@ public class LoanApplication {
         createviewLoanDetailsButton();
         createLabels();
         createTextFIelds();
+        createsaveButton();
+        createloanButton();
         createloanUIpanel();
         createloanDetailsPanel();
         createsaveloadPanel();
@@ -74,7 +90,7 @@ public class LoanApplication {
         frame.setLayout(new BorderLayout());
         frame.add(loanUIpanel, BorderLayout.PAGE_START);
         frame.add(loanDetailsPanel, BorderLayout.CENTER);
-        frame.add(loanListPane, BorderLayout.LINE_END);;
+        frame.add(loanListPane, BorderLayout.LINE_END);
         frame.add(saveloadPanel, BorderLayout.PAGE_END);
         frame.pack();
         frame.setVisible(true);
@@ -138,6 +154,23 @@ public class LoanApplication {
         loanLength = new JTextField(20);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a saveButton
+    public void createsaveButton() {
+        saveButton = new JButton("Save");
+        saveListener = new SaveListener(this);
+        saveButton.addActionListener(saveListener);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a loadButton
+    public void createloanButton() {
+        loadButton = new JButton("Load");
+        loadListener = new LoadListener(this);
+        loadButton.addActionListener(loadListener);
+    }
+
+
     // REQUIRES: all required JLabels, text fields, and buttons are created
     // MODIFIES: this
     // EFFECTS: creates add loan panel
@@ -171,7 +204,9 @@ public class LoanApplication {
     public void createsaveloadPanel() {
         saveloadPanel = new JPanel();
         saveloadPanel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        saveloadPanel.setPreferredSize(new Dimension(1000, 50));
+        saveloadPanel.setLayout(new FlowLayout());
+        saveloadPanel.add(saveButton);
+        saveloadPanel.add(loadButton);
     }
 
     // MODIFIES: this
@@ -180,5 +215,30 @@ public class LoanApplication {
         loanDetailsPanel.add(detailsTable, BorderLayout.CENTER);
         frame.repaint();
         frame.revalidate();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: saves loan list to destination file
+    public void saveLoans() {
+        try {
+            writer.open();
+            writer.write(loans);
+            writer.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to save list of loan");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads loan list from file
+    public void loadLoans() {
+        try {
+            ListOfLoan listOfLoan = reader.read();
+            for (Loan loan : listOfLoan.getListOfLoan()) {
+                listModel.addElement(loan);
+            }
+        } catch (IOException e) {
+            System.out.println("Failed to load list of loan");
+        }
     }
 }

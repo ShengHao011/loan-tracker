@@ -11,9 +11,6 @@
   There are a lot of calculations involved and having an application with the calculations implemented would be useful.
   It also allows me to add extra components in the future as I learn more about the in depth details of loans.
 
-
-
-
 ### *User Stories*
 - As a user, I want to add a certain type of loan to a list of loan.
 - As a user, I want view the list of loans that I currently have.
@@ -21,6 +18,21 @@
 - As a user, I want to choose a loan and view the details of that specific loan. 
 - As a user, I want to save my list of loans to file.
 - As a user, I want to load my list of loans from file.
+
+#### Instructions for Grader
+- You can generate the first required event related to adding Xs to a Y by entering the details of your loan
+in the 4 text fields and then clicking the *Add Pure Discount Loan* button or *Add Amortized Loan* button
+depending on the type of loan. This will add the loan to the list of loans displayed on the right panel.
+- You can generate the second required event related to adding Xs to a Y by selecting a loan from the 
+list of loan panel on the right, and then clicking the *Delete Selected Loan* button. This will remove 
+the loan from your list of loans.
+- You can locate my visual component by selecting a loan from the list of loans, then clicking the
+*View Selected Loan Details* button. This will display a table that contains loan details specific 
+to the type of loan selected. 
+- You can save the state of my application by clicking the *Save* button. This will save your current
+list of loans to file.
+- You can reload the state of my application by clicking the *Load* button. This will load your last 
+saved list of loans to your current list of loans.
  
 
     

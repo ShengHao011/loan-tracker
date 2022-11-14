@@ -216,7 +216,7 @@ public class LoanApp {
             listOfLoan = reader.read();
             System.out.println("Loaded list of loan from" + destination);
         } catch (IOException e) {
-            System.out.printf("Failed to load list of loan");
+            System.out.println("Failed to load list of loan");
         }
     }
 }

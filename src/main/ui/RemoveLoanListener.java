@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 // Action listener for remove loan button
 public class RemoveLoanListener implements ActionListener {
-    LoanApplication loanApplication;
+    private LoanApplication loanApplication;
 
     // EFFECTS: creates a RemoveLoanListener
     public RemoveLoanListener(LoanApplication loanApplication) {
