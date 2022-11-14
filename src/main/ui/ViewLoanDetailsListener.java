@@ -4,6 +4,7 @@ import model.AmortizedLoan;
 import model.Loan;
 import model.PureDiscountLoan;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,10 +21,12 @@ public class ViewLoanDetailsListener implements ActionListener {
     private Object [] title;
     private Object [] scheduleColumnNames;
     private DefaultTableModel model;
+    private JLabel label;
 
     // EFFECTS: creates a viewLoanDetails Listener,
     public ViewLoanDetailsListener(LoanApplication loanApplication) {
         this.loanApplication = loanApplication;
+        label = new JLabel(filler);
     }
 
     // EFFECTS: create corresponding table to the corresponding type of loan
@@ -50,9 +53,13 @@ public class ViewLoanDetailsListener implements ActionListener {
         model.addRow(row1Data);
         model.addRow(loanInfoData);
         model.addRow(fvData);
+
+        createlabel(selectedLoan);
+
         loanApplication.detailsTable.setModel(model);
         loanApplication.detailsTable.setGridColor(Color.RED);
-        loanApplication.addJTabletoPanel();
+        loanApplication.detailsTable.setBackground(Color.YELLOW);
+        loanApplication.addJTabletoPanel(label);
     }
 
     // MODIFIES: detailsTable
@@ -76,13 +83,11 @@ public class ViewLoanDetailsListener implements ActionListener {
             eb = bb - principalPaid;
         }
         double totalPayment = yearlyPayment * selectedLoan.getYearsRemaining();
-        double totalPrinciplePaid = totalPayment - totalInterest;
-        Object [] rowTotals = {"Totals:", filler, totalPayment, totalInterest, totalPrinciplePaid};
+        Object [] rowTotals = {"Totals:", filler, totalPayment, totalInterest, totalPayment - totalInterest};
         model.addRow(rowTotals);
-
+        createlabel(selectedLoan);
+        setupdetailsTable();
         loanApplication.detailsTable.setModel(model);
-        loanApplication.detailsTable.setGridColor(Color.RED);
-        loanApplication.addJTabletoPanel();
     }
 
     // MODIFIES: this
@@ -103,5 +108,21 @@ public class ViewLoanDetailsListener implements ActionListener {
         model.addRow(emptyRow);
         model.addRow(title);
         model.addRow(scheduleColumnNames);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets up JLabel for the name of the loan
+    public void createlabel(Loan selectedLoan) {
+        String underLined = "<html><u>" + selectedLoan.getName() + ":" + "</u></html>";
+        label.setText(underLined);
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, 25));
+    }
+
+    // MODIFIES: detailsTable
+    // EFFECTS: sets up detailsTable for amt loans
+    public void setupdetailsTable() {
+        loanApplication.detailsTable.setGridColor(Color.RED);
+        loanApplication.detailsTable.setBackground(Color.YELLOW);
+        loanApplication.addJTabletoPanel(label);
     }
 }

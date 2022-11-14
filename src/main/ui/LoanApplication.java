@@ -1,5 +1,6 @@
 package ui;
 
+import com.sun.security.auth.module.JndiLoginModule;
 import model.ListOfLoan;
 import model.Loan;
 import persistence.Reader;
@@ -64,6 +65,7 @@ public class LoanApplication {
         createJlist();
         loanListPane = new JScrollPane(loanList);
         loanListPane.setPreferredSize(new Dimension(200, 800));
+        loanListPane.setBackground(Color.BLUE);
 
         createaddPDloanButton();
         createaddAmtloanButton();
@@ -108,6 +110,11 @@ public class LoanApplication {
     // EFFECTS: creates addPDloanButton
     public void createaddPDloanButton() {
         addPDloanButton = new JButton("Add Pure Discount Loan");
+        addPDloanButton.setBackground(Color.ORANGE);
+        addPDloanButton.setOpaque(true);
+        addPDloanButton.setBorderPainted(false);
+        addPDloanButton.setFont(new Font(addPDloanButton.getFont().getName(),
+                Font.ITALIC, addPDloanButton.getFont().getSize()));
         addPDLoanListener = new AddPDLoanListener(this);
         addPDloanButton.addActionListener(addPDLoanListener);
     }
@@ -116,6 +123,11 @@ public class LoanApplication {
     // EFFECTS: creates addAmtloanButton
     public void createaddAmtloanButton() {
         addAmtloanButton = new JButton("Add Amortized Loan");
+        addAmtloanButton.setBackground(Color.ORANGE);
+        addAmtloanButton.setOpaque(true);
+        addAmtloanButton.setBorderPainted(false);
+        addAmtloanButton.setFont(new Font(addAmtloanButton.getFont().getName(),
+                Font.ITALIC, addAmtloanButton.getFont().getSize()));
         addAmtLoanListener = new AddAmtLoanListener(this);
         addAmtloanButton.addActionListener(addAmtLoanListener);
     }
@@ -124,6 +136,12 @@ public class LoanApplication {
     // EFFECTS: creates removeLoanButton
     public void createremoveLoanButton() {
         removeLoanButton = new JButton("Delete Selected Loan");
+        removeLoanButton.setBackground(Color.BLUE);
+        removeLoanButton.setOpaque(true);
+        removeLoanButton.setBorderPainted(false);
+        removeLoanButton.setForeground(Color.WHITE);
+        removeLoanButton.setFont(new Font(removeLoanButton.getFont().getName(),
+                Font.ITALIC, removeLoanButton.getFont().getSize()));
         removeLoanListener = new RemoveLoanListener(this);
         removeLoanButton.addActionListener(removeLoanListener);
     }
@@ -132,6 +150,12 @@ public class LoanApplication {
     // EFFECTS: creates a viewLoanDetailsButton
     public void createviewLoanDetailsButton() {
         viewLoanDetailsButton = new JButton("View Selected Loan Details");
+        viewLoanDetailsButton.setBackground(Color.BLUE);
+        viewLoanDetailsButton.setOpaque(true);
+        viewLoanDetailsButton.setBorderPainted(false);
+        viewLoanDetailsButton.setForeground(Color.WHITE);
+        viewLoanDetailsButton.setFont(new Font(viewLoanDetailsButton.getFont().getName(),
+                Font.ITALIC, viewLoanDetailsButton.getFont().getSize()));
         viewLoanDetailsListener = new ViewLoanDetailsListener(this);
         viewLoanDetailsButton.addActionListener(viewLoanDetailsListener);
     }
@@ -140,9 +164,21 @@ public class LoanApplication {
     // EFFECTS: creates all labels
     public void createLabels() {
         loanNameLabel = new JLabel("Loan Name");
+        loanNameLabel.setForeground(Color.WHITE);
+        loanNameLabel.setFont(new Font(loanNameLabel.getFont().getName(),
+                Font.BOLD, loanNameLabel.getFont().getSize()));
         loanAmountLabel = new JLabel("Loan Amount");
+        loanAmountLabel.setForeground(Color.WHITE);
+        loanAmountLabel.setFont(new Font(loanAmountLabel.getFont().getName(),
+                Font.BOLD, loanAmountLabel.getFont().getSize()));
         interestRateLabel = new JLabel("Effective Annual Rate (%)");
+        interestRateLabel.setForeground(Color.WHITE);
+        interestRateLabel.setFont(new Font(interestRateLabel.getFont().getName(),
+                Font.BOLD, interestRateLabel.getFont().getSize()));
         loanLengthLabel = new JLabel("Length (years)");
+        loanLengthLabel.setForeground(Color.WHITE);
+        loanLengthLabel.setFont(new Font(loanLengthLabel.getFont().getName(),
+                Font.BOLD, loanLengthLabel.getFont().getSize()));
     }
 
     // MODIFIES: this
@@ -187,8 +223,9 @@ public class LoanApplication {
         loanUIpanel.add(loanLength);
         loanUIpanel.add(addPDloanButton);
         loanUIpanel.add(addAmtloanButton);
-        loanUIpanel.add(removeLoanButton);
         loanUIpanel.add(viewLoanDetailsButton);
+        loanUIpanel.add(removeLoanButton);
+        loanUIpanel.setBackground(Color.RED);
     }
 
     // MODIFIES: this
@@ -197,6 +234,7 @@ public class LoanApplication {
         loanDetailsPanel = new JPanel();
         loanDetailsPanel.setLayout(new BorderLayout());
         loanDetailsPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
+        loanDetailsPanel.setBackground(Color.YELLOW);
     }
 
     // MODIFIES: this
@@ -210,9 +248,10 @@ public class LoanApplication {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the newly constructed JTabel to panel to display loan details
-    public void addJTabletoPanel() {
+    // EFFECTS: adds the newly constructed JTabel and construct a JLabel to them to panel to display loan details
+    public void addJTabletoPanel(JLabel label) {
         loanDetailsPanel.add(detailsTable, BorderLayout.CENTER);
+        loanDetailsPanel.add(label, BorderLayout.PAGE_START);
         frame.repaint();
         frame.revalidate();
     }
