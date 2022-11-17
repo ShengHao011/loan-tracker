@@ -247,6 +247,10 @@ public class LoanApplication {
         saveloadPanel.add(loadButton);
     }
 
+    // image.png link: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.td.com%2Fca%2Fen%2Fpersonal-banking%
+    // 2Fproducts%2Fborrowing%2Floans%2Fbenefits-of-a-personal-loan%2F&psig=AOvVaw1EuH8e29FJeGuCuon43aG1&ust=1668
+    // 810112300000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCMjAh6KgtvsCFQAAAAAdAAAAABAI
+    
     // MODIFIES: this
     // EFFECTS: adds the newly constructed JTabel and construct a JLabel to them to panel to display loan details,
     // also adds an image at the botton of the panel
