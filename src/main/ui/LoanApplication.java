@@ -10,7 +10,7 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-// Loan Tracker Application
+// Loan Tracker Application Graphical User Interface
 public class LoanApplication {
     protected ListOfLoan loans;
     protected JList<Loan> loanList;

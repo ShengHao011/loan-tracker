@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// Loan Tracker Application
+// Loan Tracker Application Console
 public class LoanApp {
     private static final String destination = "./data/myFile.json";
     private Scanner input;
