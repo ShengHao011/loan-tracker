@@ -248,10 +248,17 @@ public class LoanApplication {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the newly constructed JTabel and construct a JLabel to them to panel to display loan details
+    // EFFECTS: adds the newly constructed JTabel and construct a JLabel to them to panel to display loan details,
+    // also adds an image at the botton of the panel
     public void addJTabletoPanel(JLabel label) {
+        ImageIcon imageIcon = new ImageIcon("./data/image.png");
+        Image image = imageIcon.getImage();
+        Image newImg = image.getScaledInstance(300, 150, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newImg);
+        JLabel imageLabel = new JLabel(imageIcon);
         loanDetailsPanel.add(detailsTable, BorderLayout.CENTER);
         loanDetailsPanel.add(label, BorderLayout.PAGE_START);
+        loanDetailsPanel.add(imageLabel, BorderLayout.PAGE_END);
         frame.repaint();
         frame.revalidate();
     }

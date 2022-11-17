@@ -5,8 +5,9 @@
 - The application can produce loan details of 2 types of loans: 
   **Pure discount loans, Amortized Loans with equal payment**. 
   Details of these loans include present value, future value, total payment, interest paid, and principle paid. 
+This is achieved by applying DCF and annuities concepts to calculate desired information.
 - This application is for users to access details of their loan. They can then 
-  make decisions like how much money should they be paying every period, and the amount of loan left to be paid.
+  make decisions regarding how much money should they be paying every period, and the amount of loan left to be paid.
 - This project is of interest for me because I'm in business and work with loans a lot.
   There are a lot of calculations involved and having an application with the calculations implemented would be useful.
   It also allows me to add extra components in the future as I learn more about the in depth details of loans.
@@ -28,7 +29,7 @@ list of loan panel on the right, and then clicking the *Delete Selected Loan* bu
 the loan from your list of loans.
 - You can locate my visual component by selecting a loan from the list of loans, then clicking the
 *View Selected Loan Details* button. This will display a table that contains loan details specific 
-to the type of loan selected. 
+to the type of loan selected and an image. 
 - You can save the state of my application by clicking the *Save* button. This will save your current
 list of loans to file.
 - You can reload the state of my application by clicking the *Load* button. This will load your last 
