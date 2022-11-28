@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+// This class was reused from Alarm system project: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 /**
  * Represents a log of list of loan events.
  * We use the Singleton Design Pattern to ensure that there is only

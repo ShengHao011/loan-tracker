@@ -3,7 +3,7 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
-
+// This class was reused from Alarm system project: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 /**
  * Represents a list of loan event
  */
