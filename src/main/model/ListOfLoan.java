@@ -19,6 +19,16 @@ public class ListOfLoan implements Writable {
         return listOfLoan;
     }
 
+    public void addLoan(Loan loan) {
+        listOfLoan.add(loan);
+        EventLog.getInstance().logEvent(new Event("New Loan Added"));
+    }
+
+    public void removeLoan(int index) {
+        listOfLoan.remove(index);
+        EventLog.getInstance().logEvent(new Event("A Loan Was Removed"));
+    }
+
     @Override
     public JSONObject convertToJson() {
         JSONObject objJ = new JSONObject();

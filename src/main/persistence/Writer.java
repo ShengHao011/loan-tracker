@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.ListOfLoan;
 import org.json.JSONObject;
 
@@ -30,6 +32,7 @@ public class Writer {
     public void write(ListOfLoan lol) {
         JSONObject objJ = lol.convertToJson();
         saveToFile(objJ.toString(indentFactor));
+        EventLog.getInstance().logEvent(new Event("List of loan saved to file"));
     }
 
     // MODFIES: this

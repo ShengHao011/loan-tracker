@@ -35,6 +35,31 @@ list of loans to file.
 - You can reload the state of my application by clicking the *Load* button. This will load your last 
 saved list of loans to your current list of loans.
  
+##### "Phase 4: Task 2"
+Mon Nov 28 10:56:23 PST 2022
 
+List of loan loaded from file
+
+Mon Nov 28 10:56:28 PST 2022
+
+New Loan Added
+
+Mon Nov 28 10:56:29 PST 2022
+
+A Loan Was Removed
+
+Mon Nov 28 10:56:34 PST 2022
+
+New Loan Added
+
+Mon Nov 28 10:56:38 PST 2022
+
+New Loan Added
+
+Mon Nov 28 10:56:40 PST 2022
+
+List of loan saved to file
+
+Process finished with exit code 0
     
   

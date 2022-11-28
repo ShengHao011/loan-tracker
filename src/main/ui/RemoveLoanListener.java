@@ -18,6 +18,6 @@ public class RemoveLoanListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int index = loanApplication.loanList.getSelectedIndex();
         loanApplication.listModel.remove(index);
-        loanApplication.loans.getListOfLoan().remove(index);
+        loanApplication.loans.removeLoan(index);
     }
 }

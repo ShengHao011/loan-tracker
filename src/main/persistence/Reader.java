@@ -1,8 +1,6 @@
 package persistence;
 
-import model.AmortizedLoan;
-import model.ListOfLoan;
-import model.PureDiscountLoan;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -43,6 +41,7 @@ public class Reader {
     private ListOfLoan createLoL(JSONObject objJ) {
         ListOfLoan lol = new ListOfLoan();
         addLoans(lol, objJ);
+        EventLog.getInstance().logEvent(new Event("List of loan loaded from file"));
         return lol;
     }
 

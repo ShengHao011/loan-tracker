@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.ListOfLoan;
 import model.Loan;
 import persistence.Reader;
@@ -85,7 +87,17 @@ public class LoanApplication {
     // EFFECTS: sets up frame and add all panels
     public void setUpFrame() {
         frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                for (Event e : EventLog.getInstance()) {
+                    System.out.println(e.toString());
+                }
+                System.exit(0);
+            }
+        });
         frame.setTitle("Loan Tracker Application");
         frame.setPreferredSize(new Dimension(1000, 800));
         frame.setLayout(new BorderLayout());
@@ -291,4 +303,5 @@ public class LoanApplication {
             System.out.println("Failed to load list of loan");
         }
     }
+
 }
