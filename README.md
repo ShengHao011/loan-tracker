@@ -61,5 +61,17 @@ Mon Nov 28 10:56:40 PST 2022
 List of loan saved to file
 
 Process finished with exit code 0
-    
+
+##### Phase 4: Task 3
+This application is for users to keep track of their different types of loans.
+However, they will never need to create a general type of loan, therefore, Loan
+is an abstract class representing the general type of loans. Extending this abstract
+class is the two types of loans currently implemented being Pure Discount Loans
+and Amortized Loans. A ListOfLoan class was created to contain an unspecified amount
+of loans and methods to modify that list. The ListOfLoan, PureDiscountLoan, and 
+AmortizedLoan classes all implement the interface Writeable that requires them 
+to implement the method to convert those objects into JSON objects to be saved
+and loaded from file.
+
+
   
