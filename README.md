@@ -1,4 +1,4 @@
-# My Personal Project - *Loan Tracker*
+# *Loan Tracker*
 
 ## Description:
 - This application is a loan tracker for users to create loans and access their details when needed.
@@ -20,58 +20,6 @@ This is achieved by applying DCF and annuities concepts to calculate desired inf
 - As a user, I want to save my list of loans to file.
 - As a user, I want to load my list of loans from file.
 
-#### Instructions for Grader
-- You can generate the first required event related to adding Xs to a Y by entering the details of your loan
-in the 4 text fields and then clicking the *Add Pure Discount Loan* button or *Add Amortized Loan* button
-depending on the type of loan. This will add the loan to the list of loans displayed on the right panel.
-- You can generate the second required event related to adding Xs to a Y by selecting a loan from the 
-list of loan panel on the right, and then clicking the *Delete Selected Loan* button. This will remove 
-the loan from your list of loans.
-- You can locate my visual component by selecting a loan from the list of loans, then clicking the
-*View Selected Loan Details* button. This will display a table that contains loan details specific 
-to the type of loan selected and an image. 
-- You can save the state of my application by clicking the *Save* button. This will save your current
-list of loans to file.
-- You can reload the state of my application by clicking the *Load* button. This will load your last 
-saved list of loans to your current list of loans.
- 
-##### Phase 4: Task 2
-Mon Nov 28 10:56:23 PST 2022
-
-List of loan loaded from file
-
-Mon Nov 28 10:56:28 PST 2022
-
-New Loan Added
-
-Mon Nov 28 10:56:29 PST 2022
-
-A Loan Was Removed
-
-Mon Nov 28 10:56:34 PST 2022
-
-New Loan Added
-
-Mon Nov 28 10:56:38 PST 2022
-
-New Loan Added
-
-Mon Nov 28 10:56:40 PST 2022
-
-List of loan saved to file
-
-Process finished with exit code 0
-
-##### Phase 4: Task 3
-This application is for users to keep track of their different types of loans.
-However, they will never need to create a general type of loan, therefore, Loan
-is an abstract class representing the general type of loans. Extending this abstract
-class is the two types of loans currently implemented being Pure Discount Loans
-and Amortized Loans. A ListOfLoan class was created to contain an unspecified amount
-of loans and methods to modify that list. The ListOfLoan, PureDiscountLoan, and 
-AmortizedLoan classes all implement the interface Writeable that requires them 
-to implement the method to convert those objects into JSON objects to be saved
-and loaded from file.
 
 
   
