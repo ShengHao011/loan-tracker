@@ -8,9 +8,7 @@
 This is achieved by applying DCF and annuities concepts to calculate desired information.
 - This application is for users to access details of their loan. They can then 
   make decisions regarding how much money should they be paying every period, and the amount of loan left to be paid.
-- This project is of interest for me because I'm in business and work with loans a lot.
-  There are a lot of calculations involved and having an application with the calculations implemented would be useful.
-  It also allows me to add extra components in the future as I learn more about the in depth details of loans.
+
 
 ### *User Stories*
 - As a user, I want to add a certain type of loan to a list of loan.
